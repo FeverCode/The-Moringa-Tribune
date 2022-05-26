@@ -1,7 +1,10 @@
+from email import message
 from lib2to3.pytree import convert
 from django.shortcuts import render, redirect
 from django.http  import HttpResponse,Http404
 import datetime as dt
+
+from news.models import Article
 
 # Create your views here.
 def welcome(request):
@@ -62,3 +65,16 @@ def past_days_news(request,past_date):
     #         '''
     # return HttpResponse(html)
     
+    
+def search_results(request):
+    
+    if 'artcle' in request.GET and request.GET.get["artcle"]:
+        search_term = request.GET.get("artcle")
+        searched_articles = Article.search_by_title(search_term)
+        message = f"{search_term}"
+        
+        return render(request, 'all-news/search.html', {'message': message,"articles": searched_articles})
+
+    else:
+        message = "You haven't searches for any term "
+        return render(request, 'all-news/search.html', {'message': message})
