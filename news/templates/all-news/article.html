@@ -3,10 +3,13 @@
  {% block content %}
 
  <div class="container">
+   
 
    <div class="row">
-     <img src="{{article.article_image.url}}"  class="img-responsive" alt="">
+     {% for img in Article %}
+     <img src="{{img.image.url}}"  class="img-responsive" alt="">
    </div>
+   {% endfor %}
 
    <div class="row">
      <h1 class="text-center">{{article.title}}</h1>

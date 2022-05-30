@@ -15,6 +15,9 @@ from unittest.mock import DEFAULT
 import django_heroku
 import dj_database_url
 from decouple import config, Csv
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -35,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'news.apps.NewsConfig',
-    'bootstrap3'
+    'bootstrap3',
+    'cloudinary',
 ]
 
 MIDDLEWARE = [
@@ -63,7 +67,6 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'django.template.context_processors.media',
             ],
         },
     },
@@ -155,9 +158,13 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-# configuring the location for media
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+cloudinary.config(
+    cloud_name="fevercode",
+    api_key="119887828829865",
+    api_secret="pfSl_KWv-8aXlvslfOrB6904QMM"
+)
+
 
 # Configure Django App for Heroku.
 django_heroku.settings(locals())
