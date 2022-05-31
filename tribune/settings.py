@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
+import smtplib
 from unittest.mock import DEFAULT
 import django_heroku
 import dj_database_url
@@ -164,6 +165,14 @@ cloudinary.config(
     api_key="119887828829865",
     api_secret="pfSl_KWv-8aXlvslfOrB6904QMM"
 )
+
+
+# Email configurations remember to install python-decouple
+EMAIL_USE_TLS = config('EMAIL_USE_TLS')
+EMAIL_HOST = config('EMAIL_HOST')
+EMAIL_PORT = config('EMAIL_PORT')
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 
 
 # Configure Django App for Heroku.
