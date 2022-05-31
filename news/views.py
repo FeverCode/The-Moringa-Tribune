@@ -22,9 +22,10 @@ def news_today(request):
         if form.is_valid():
             name = form.cleaned_data['your_name']
             email = form.cleaned_data['email']
+            send_welcome_email(name, email)
             receipient = NewsLetterRecepients(name=name, email=email)
             receipient.save()
-            send_welcome_email(name, email)
+            
             HttpResponseRedirect('news_today')
     else:
         form = NewsLetterForm()
