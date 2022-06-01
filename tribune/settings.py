@@ -160,9 +160,9 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
 cloudinary.config(
-    cloud_name="fevercode",
-    api_key="119887828829865",
-    api_secret="pfSl_KWv-8aXlvslfOrB6904QMM"
+    cloud_name=config('CD_NAME'),
+    api_key=config('CD_API_KEY'),
+    api_secret=config('CD_API_KEY_SECRET')
 )
 
 
