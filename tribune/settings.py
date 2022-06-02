@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'news.apps.NewsConfig',
     'bootstrap3',
     'cloudinary',
+    'tinymce',
 ]
 
 MIDDLEWARE = [
@@ -172,6 +173,11 @@ EMAIL_HOST = config('EMAIL_HOST')
 EMAIL_PORT = config('EMAIL_PORT')
 EMAIL_HOST_USER = config ('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+
+
+LOGIN_URL = '/login/'
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/login/'
 
 
 # Configure Django App for Heroku.

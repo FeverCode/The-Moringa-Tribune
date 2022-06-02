@@ -6,18 +6,17 @@
    
 
    <div class="row">
-     {% for img in Article %}
-     <img src="{{img.image.url}}"  class="img-responsive" alt="">
+     <img src="{{article.image.url}}"  class="img-responsive" alt="">
    </div>
-   {% endfor %}
 
    <div class="row">
      <h1 class="text-center">{{article.title}}</h1>
    </div>
 
-   <div class="row">
-     <p>{{article.post}}</p>
-   </div>
+    <div class="row">
+     {% autoescape on %}
+     {{article.post| safe}}
+    {% endautoescape %}
 
    <div class="row">
      <p>Posted {{article.pub_date|timesince}} by {{article.editor.first_name}}</p>
