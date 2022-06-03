@@ -1,4 +1,4 @@
-{% load bootstrap3 %} 
+{% load bootstrap3 %}
 {% load static%}
 <!DOCTYPE html>
 <html>
@@ -10,21 +10,22 @@
   <title>New Article</title>
   {{form.media}}
 
-{% block styles %} {% bootstrap_css %}
+  {% block styles %} {% bootstrap_css %}
   <link rel="stylesheet" href="{% static 'css/news.css' %}"> {% endblock %}
 
 </head>
 
 <body>
+  <div class="container">
+    <form action="{%url 'new-article'%}" method="post" enctype="multipart/form-data">
+      {%csrf_token%}
 
-  <form  action="{%url 'new-article'%}" method="post" enctype="multipart/form-data">
-    {%csrf_token%}
+      {% bootstrap_form form%}
+      <input type="submit" class="btn btn-success btn-lg" value="Post">
+    </form>
+  </div>
 
-    {% bootstrap_form form%}
-    <input type="submit" class="btn btn-success btn-lg" value="Post">
-  </form>
-
-   {% block scripts %}
+  {% block scripts %}
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   {% bootstrap_javascript %} {% endblock %}
 
