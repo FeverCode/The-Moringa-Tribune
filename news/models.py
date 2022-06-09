@@ -52,5 +52,11 @@ class Article(models.Model):
         return news
         
 class NewsLetterRecepients(models.Model):
-    name = models.CharField(max_length=30)
+    name = models.CharField(max_length=30, null=True, blank=True)
     email = models.EmailField()
+    
+class MoringaMerch(models.Model):
+    name = models.CharField(max_length=40)
+    description = models.TextField()
+    price = models.DecimalField(decimal_places=2, max_digits=20)
+    

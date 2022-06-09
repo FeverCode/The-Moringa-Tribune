@@ -2,6 +2,7 @@ from django.conf.urls import url
 from django.urls import path
 from . import views
 from django.contrib.auth import views as auth_views
+from rest_framework.authtoken.views import obtain_auth_token
 
 urlpatterns = [
     path('', views.news_today, name='newsToday'),
@@ -11,4 +12,9 @@ urlpatterns = [
     path('new/article', views.new_article, name='new-article'),
     path('login/', auth_views.LoginView.as_view(), name='login'),
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
+    path('ajax/newsletter/', views.newsletter, name='newsletter'),
+    path('api/merch/', views.MerchList.as_view()),
+    path('api-token-auth/', obtain_auth_token),
+    path('api/merch/merch-id/<int:pk>/', views.MerchDescription.as_view()),
+    
 ]
